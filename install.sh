@@ -1,15 +1,26 @@
+#!/bin/sh
+
 OLDPWD=$PWD
-cp ./eth-wifi-switch.sh /usr/local/bin/eth-wifi-switch.sh
-chmod +x /usr/local/bin/eth-wifi-switch.sh
-cp ./eth-wifi-switch.service /etc/systemd/system/eth-wifi-switch.service
-systemctl enable eth-wifi-switch.service
+sudo cp ./eth-wifi-switch.sh /usr/local/bin/eth-wifi-switch.sh
+sudo chmod +x /usr/local/bin/eth-wifi-switch.sh
+sudo cp ./eth-wifi-switch.service /etc/systemd/system/eth-wifi-switch.service
+sudo systemctl enable eth-wifi-switch.service
 
-apt-get install libcamera-apps 
+sudo apt-get -y install libcamera-apps 
 
-mkdir /usr/local/bin/mediamtx
+sudo mkdir /usr/local/bin/mediamtx
 cd /usr/local/bin/mediamtx
-wget https://github.com/bluenviron/mediamtx/releases/download/v1.14.0/mediamtx_v1.14.0_linux_arm64.tar.gz
-tar xzf mediamtx_v1.14.0_linux_arm64.tar.gz
+sudo wget https://github.com/bluenviron/mediamtx/releases/download/v1.14.0/mediamtx_v1.14.0_linux_arm64.tar.gz
+sudo tar xzf mediamtx_v1.14.0_linux_arm64.tar.gz
 cd $OLDPWD
-cp ./mediamtx.service /etc/systemd/system/mediamtx.service
-cp ./mediamtx.yml /usr/local/bin/mediamtx/
+sudo cp ./mediamtx.service /etc/systemd/system/mediamtx.service
+sudo cp ./mediamtx.yml /usr/local/bin/mediamtx/
+
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+\. "$HOME/.nvm/nvm.sh"
+nvm install 24
+cd $OLDPWD
+cd ./bird-interface/backend/
+npm i
+cd ../frontend/
+npm i
