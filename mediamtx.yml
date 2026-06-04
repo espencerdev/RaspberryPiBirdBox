@@ -763,7 +763,7 @@ paths:
   # example:
   # my_camera:
   #   source: rtsp://my_camera
-  cam:
+  view:
     source: rpiCamera
     sourceOnDemand: yes
   # Settings under path "all_others" are applied to all paths that

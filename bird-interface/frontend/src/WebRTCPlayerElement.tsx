@@ -3,6 +3,7 @@ import { useWebRTCPlayer } from "./useWebRTCPlayer";
 
 export default function Player(props : {streamUrl : string | Promise<string>}){
     const {videoRef, status} = useWebRTCPlayer(props.streamUrl);
+    console.log(props.streamUrl);
     return <div>
         <video
           ref={videoRef}
