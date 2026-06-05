@@ -9,7 +9,7 @@ await UpdateGpioState();
 exitHook(signal => {DeinitOld();});
 
 const server = express();
-const port = 3000;
+const port = 80;
 
 server.use((req, res, next) => {
   console.log(req.url);

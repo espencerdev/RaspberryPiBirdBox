@@ -1,0 +1,15 @@
+[Unit]
+Description=Web server for Bird Box Interface
+After=mediamtx.service
+
+[Service]
+Type=simple
+ExecStart=/home/pi/.nvm/versions/node/v24.16.0/bin/node /home/pi/RaspberryPiBirdBox/bird-interface/backend/dist/server.js
+Restart=on-failure
+RestartSec=5
+User=root
+WorkingDirectory=/home/pi/RaspberryPiBirdBox/bird-interface/backend/
+Environment="PATH=/home/pi/.nvm/versions/node/v20.10.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games"
+
+[Install]
+WantedBy=multi-user.target

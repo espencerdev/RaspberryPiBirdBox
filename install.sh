@@ -35,3 +35,8 @@ npm run build
 cd ../backend/
 npm i -D
 npm run build
+cd $ORIGINAL_PWD
+sudo cp ./bird-interface.service /etc/systemd/system/bird-interface.service
+sudo systemctl enable bird-interface.service
+sudo systemctl start bird-interface.service
+

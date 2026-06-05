@@ -7,7 +7,7 @@ Type=simple
 ExecStart=/usr/local/bin/mediamtx/mediamtx /usr/local/bin/mediamtx/mediamtx.yml
 Restart=on-failure
 RestartSec=5
-User=pi
+User=root
 WorkingDirectory=/usr/local/bin/mediamtx
 
 [Install]

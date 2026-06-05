@@ -12,7 +12,7 @@
     "@iiot2k/gpiox": "^3.0.5",
     "exit-hook": "^4.0.0",
     "express": "^5.1.0",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^6.0.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
