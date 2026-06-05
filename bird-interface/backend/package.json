@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "nodemon server.ts",
-    "build": "tsc server.ts",
-    "start": "node server.js"
+    "build": "tsc",
+    "start": "node ./dist/server.js"
   },
   "dependencies": {
     "@iiot2k/gpiox": "^3.0.5",

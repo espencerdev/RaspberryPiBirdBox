@@ -1,11 +1,11 @@
 import {UpdateGpioState} from "./gpioControls.ts";
 import sqlite3 from "sqlite3";
 
-export async function GetIrEnableData() : string {
+export async function GetIrEnableData() : Promise<string | undefined> {
     return await new Promise<string | undefined>(async (resolve) => {const db = await new sqlite3.Database("./config.db", (err) => {db.get("SELECT IrEnable FROM Configuration", (err, rows) =>{resolve((rows as {IrEnable? : string})?.IrEnable )})})});
 }
 
-export async function GetIrPinNumData() : string {
+export async function GetIrPinNumData() : Promise<string | undefined> {
     return await new Promise<string | undefined>(async (resolve) => {const db = await new sqlite3.Database("./config.db", (err) => {db.get("SELECT IrPinNum FROM Configuration", (err, rows) =>{resolve((rows as {IrPinNum? : string})?.IrPinNum )})})});
 }
 

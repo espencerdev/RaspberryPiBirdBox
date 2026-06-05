@@ -4,20 +4,21 @@ import {GetIrEnableData, GetIrPinNumData} from "./configUtil.ts"
 
 let gpioLastEnabled : number = -1;
 
-export async function UpdateGpioState(): void {
+export async function UpdateGpioState(): Promise<void> {
     if((await GetIrEnableData()) == "1") {
-	const activeIrPin : number = +(await GetIrPinNumData());
-	if (gpioLastEnabled != activeIrPin){
+	const activeIrPin : number = +(await GetIrPinNumData() ?? -1);
+	if (gpioLastEnabled != activeIrPin && activeIrPin >= 0){
 	    DeinitOld();
 	    gpiox.init_gpio(activeIrPin, 3, false);
 	    gpioLastEnabled = activeIrPin;
 	}
-	gpiox.set_gpio(activeIrPin, true);
+        if (activeIrPin >= 0) {
+	    gpiox.set_gpio(activeIrPin, true);
+	}
     }
     else {
-	if (gpioLastEnabled >=0) {
-	    gpiox.set_gpio(gpioLastEnabled, false);
-	}
+	DeinitOld();
+        gpioLastEnabled = -1;
     }
 }
 
