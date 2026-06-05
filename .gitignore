@@ -1,3 +1,6 @@
 alias
 .cache
 versions
+*.js*
+*.ts.map
+*.d.ts*
